@@ -6,6 +6,7 @@ export default {
       center: true,
       padding: "2rem"
     },
-    extend: {}
+    extend: {},
+    plugins: [require("@tailwindcss/forms")]
   }
 }
