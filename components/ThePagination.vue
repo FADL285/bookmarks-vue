@@ -1,47 +1,79 @@
-<template>
-  <div class="inline-flex items-center justify-center gap-3">
-    <a
-      href="#"
-      class="flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
-    >
-      <span class="sr-only">Next Page</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-3 w-3"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </a>
+<script lang="ts" setup>
+const {
+  page,
+  queryName = "page",
+  totalPages
+} = defineProps<{
+  next?: string | null
+  previous?: string | null
+  totalPages: number
+  page: number
+  queryName?: string
+}>()
 
-    <p class="text-xs text-gray-900">
-      3
+const { query } = useRoute()
+const router = useRouter()
+
+// merge all query params with new page
+const getQuery = (page: number) => {
+  return {
+    ...query,
+    [queryName]: page
+  }
+}
+const getQueryString = (page: number) => {
+  return Object.entries(getQuery(page))
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&")
+}
+
+// prev query computed
+const prevQuery = computed(() => {
+  if (page <= 1) {
+    return null
+  }
+  return getQueryString(page - 1)
+})
+// next query computed
+const nextQuery = computed(() => {
+  if (page >= totalPages) {
+    return null
+  }
+  return getQueryString(page + 1)
+})
+</script>
+
+<template>
+  <div class="flex items-center gap-3">
+    <NuxtLink
+      :disabled="page <= 1"
+      :to="`?${prevQuery}`"
+      class="flex h-10 w-10 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+    >
+      <span class="sr-only">Prev Page</span>
+      <Icon name="material-symbols:chevron-left" class="text-lg" />
+    </NuxtLink>
+
+    <p class="text-base text-gray-900">
+      {{ page }}
       <span class="mx-0.25">/</span>
-      12
+      {{ totalPages }}
     </p>
 
-    <a
-      href="#"
-      class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+    <NuxtLink
+      :disabled="page >= totalPages"
+      :to="`?${nextQuery}`"
+      class="inline-flex h-10 w-10 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
     >
       <span class="sr-only">Next Page</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-3 w-3"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </a>
+      <Icon name="material-symbols:chevron-right" class="text-lg" />
+    </NuxtLink>
   </div>
 </template>
+
+<style scoped>
+a[disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+</style>

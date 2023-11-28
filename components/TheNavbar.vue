@@ -30,9 +30,12 @@
           >
             Bookmarks
             <span
-              class="whitespace-nowrap rounded-full bg-blue-100 px-2.5 py-0.5 text-sm text-blue-700 absolute -top-3 -right-4"
+              class="flex items-center justify-center rounded-full bg-blue-100 h-8 w-8 text-sm text-blue-500 absolute -top-2.5 -right-4 animate-pulse"
             >
-              15
+              <Icon
+                name="material-symbols:bookmarks-outline-sharp"
+                class="text-lg"
+              />
             </span>
           </NuxtLink>
         </div>
