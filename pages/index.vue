@@ -19,7 +19,6 @@
         exercitationem quos voluptatibus quas natus.
       </p>
 
-      <!-- Challenges Card -->
       <div>
         <h2 class="text-2xl font-bold mt-8 text-center">Challenges and Labs</h2>
         <div class="flex gap-6 flex-wrap justify-center mt-8">
@@ -47,6 +46,7 @@
               </template>
             </BaseCard>
           </NuxtLink>
+
           <NuxtLink to="/labs">
             <BaseCard>
               <template #title> Discover Labs </template>
