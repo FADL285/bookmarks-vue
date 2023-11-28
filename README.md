@@ -1,75 +1,61 @@
-# Nuxt 3 Minimal Starter
+# Nuxt Bookmarks App
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Overview
 
-## Setup
+Welcome to the Nuxt Bookmarks App, a front-end application designed as part of the CyberDefenders recruitment task for a front-end developer position. This application allows authenticated users to add available labs and challenges to their bookmarks and remove them as needed.
 
-Make sure to install the dependencies:
+**Important**: This application requires the corresponding backend to be fully functional. The backend can be found at [Bookmarks Vue Backend](https://github.com/FADL285/bookmarks-vue).
+
+## Getting Started
+
+Before you begin, ensure you have the backend server running and Node.js version 18 or above installed. Follow the instructions provided in the backend repository to set it up.
+
+### Prerequisites
+
+- Node.js (v18 or above) and npm installed
+- Backend server running ([Bookmarks Vue Backend](https://github.com/FADL285/bookmarks-vue))
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/FADL285/bookmarks-vue-frontend.git
+   cd bookmarks-vue-frontend
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+
+   Copy `.env.example` to `.env` and modify the variables as needed to match your setup.
+
+### Development
+
+To start the development server, run:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The application will be available at [http://localhost:3000](http://localhost:3000)
 
-Build the application for production:
+### Production
+
+To build the application for production, use:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+You can preview the production build locally with:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+for more information see [Nuxt.js docs](https://nuxt.com/)
