@@ -1,4 +1,32 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+definePageMeta({
+  middleware: ["guest"]
+})
+
+const loading = ref(false)
+const data = reactive({
+  username: "",
+  password: ""
+})
+const { login } = useAuth()
+
+async function authorize() {
+  loading.value = true
+  if (!data.username || !data.password) {
+    return
+  }
+  try {
+    await login({
+      username: data.username,
+      password: data.password
+    })
+  } catch (error) {
+    console.error(error)
+  } finally {
+    loading.value = false
+  }
+}
+</script>
 
 <template>
   <div
@@ -13,7 +41,10 @@
       </p>
     </div>
 
-    <form class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+    <form
+      @submit.prevent="authorize"
+      class="mx-auto mb-0 mt-8 max-w-md space-y-4"
+    >
       <div>
         <label for="email" class="sr-only">Email</label>
 
@@ -22,6 +53,9 @@
             type="text"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter username or email"
+            autocomplete="username"
+            required
+            v-model="data.username"
           />
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -51,6 +85,9 @@
             type="password"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter password"
+            autocomplete="current-password"
+            required
+            v-model="data.password"
           />
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
