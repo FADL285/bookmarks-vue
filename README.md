@@ -5,7 +5,7 @@
 Welcome to the Nuxt Bookmarks App, a front-end application designed as part of the CyberDefenders recruitment task for a front-end developer position. This application allows authenticated users to add available labs and challenges to their bookmarks and remove them as needed.
 
 > [!NOTE]  
-> This application requires the corresponding backend to be fully functional. The backend can be found at [Bookmarks Vue Backend](https://github.com/FADL285/bookmarks-vue).
+> This application requires the corresponding backend to be fully functional. The backend can be found at [Bookmarks Vue Backend](https://github.com/7arbinho/bookmark).
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ Before you begin, ensure you have the backend server running and Node.js version
 ### Prerequisites
 
 - Node.js (v18 or above) and npm installed
-- Backend server running ([Bookmarks Vue Backend](https://github.com/FADL285/bookmarks-vue))
+- Backend server running ([Bookmarks Vue Backend](https://github.com/7arbinho/bookmark))
 
 ### Installation
 
